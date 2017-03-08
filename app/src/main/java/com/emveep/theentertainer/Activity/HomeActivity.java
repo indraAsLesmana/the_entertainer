@@ -1,4 +1,4 @@
-package com.emveep.theentertainer;
+package com.emveep.theentertainer.Activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.emveep.theentertainer.R;
 import com.emveep.theentertainer.Utility.HomeButton_effect;
 
 public class HomeActivity extends AppCompatActivity {
