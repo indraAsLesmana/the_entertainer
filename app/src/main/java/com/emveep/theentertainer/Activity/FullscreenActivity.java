@@ -36,7 +36,7 @@ public class FullscreenActivity extends AppCompatActivity implements View.OnClic
 
         mRegister.setOnClickListener(this);
         mAlready_have_account.setOnClickListener(this);
-        mRegister.setOnClickListener(this);
+        mTake_atour.setOnClickListener(this);
 
         zoomEffect();
     }
