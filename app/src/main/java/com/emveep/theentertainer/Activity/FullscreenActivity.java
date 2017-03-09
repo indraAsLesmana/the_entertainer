@@ -1,12 +1,15 @@
 package com.emveep.theentertainer.Activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.emveep.theentertainer.R;
 
@@ -14,7 +17,7 @@ import com.emveep.theentertainer.R;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class FullscreenActivity extends AppCompatActivity {
+public class FullscreenActivity extends AppCompatActivity{
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -51,12 +54,12 @@ public class FullscreenActivity extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         }
     };
-//    private View mControlsView;
+    private View mControlsView;
     private final Runnable mShowPart2Runnable = new Runnable() {
         @Override
         public void run() {
             // Delayed display of UI elements
-//            mControlsView.setVisibility(View.VISIBLE);
+            mControlsView.setVisibility(View.VISIBLE);
         }
     };
     private boolean mVisible;
@@ -81,6 +84,8 @@ public class FullscreenActivity extends AppCompatActivity {
         }
     };
 
+    private View mRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,17 +98,29 @@ public class FullscreenActivity extends AppCompatActivity {
         }
 
         mVisible = true;
-//        mControlsView = findViewById(R.id.fullscreen_content_controls);
+        mControlsView = findViewById(R.id.navigation_action);
         mContentView = findViewById(R.id.fullscreen_content);
+        mRegister = findViewById(R.id.register);
 
 
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toggle();
+                    toggle();
+
             }
         });
+
+        mRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FullscreenActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
@@ -133,7 +150,7 @@ public class FullscreenActivity extends AppCompatActivity {
 
     private void hide() {
         // Hide UI first
-//        mControlsView.setVisibility(View.GONE);
+        mControlsView.setVisibility(View.GONE);
         mVisible = false;
 
         // Schedule a runnable to remove the status and navigation bar after a delay
