@@ -2,14 +2,13 @@ package com.emveep.theentertainer.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
 
 import com.emveep.theentertainer.R;
 
@@ -20,6 +19,7 @@ import cn.carbs.android.autozoominimageview.library.AutoZoomInImageView;
  * status bar and navigation/system bar) with user interaction.
  */
 public class FullscreenActivity extends AppCompatActivity{
+    private static final String TAG = "FullscreenActivity";
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -143,7 +143,6 @@ public class FullscreenActivity extends AppCompatActivity{
         final AutoZoomInImageView auto_zoomin_image_view =
                 (AutoZoomInImageView) findViewById(R.id.auto_zoomin_image_view);
         auto_zoomin_image_view.post(new Runnable() {
-
             @Override
             public void run() {
 
@@ -163,7 +162,9 @@ public class FullscreenActivity extends AppCompatActivity{
 
                             @Override
                             public void onEnd(View view) {
-
+                                Log.d(TAG, "onEnd: -------END");
+                                auto_zoomin_image_view.setBackgroundResource(R.drawable.image_building2);
+                                zoomEffect();
                             }
                         })
                         .start(1000);
