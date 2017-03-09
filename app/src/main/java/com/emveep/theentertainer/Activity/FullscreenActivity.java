@@ -85,7 +85,8 @@ public class FullscreenActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.register:
                 // TODO: create form
-                Toast.makeText(this, "todo", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(FullscreenActivity.this, RegisterActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.take_a_tour:
                 // TODO: take a tour

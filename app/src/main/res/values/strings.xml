@@ -30,4 +30,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dont_have_account">Dont have an account?</string>
+    <string name="sing_in_facebook">Sign in with facebook</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="iaccept_agrement">I accept the user license agreement</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirmation password</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="country_of_residence">Country of residence</string>
+    <string name="register_with_facebook">Register with facebook</string>
 </resources>
