@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="actionBarStyle">@style/removeShadow</item>
         <item name="android:windowContentOverlay">@null</item> <!--remove shadow for android version lower than Lollipop-->
+        <item name="android:screenOrientation">portrait</item>
     </style>
 
     <!-- remove shadow below action bar for lollipop or newer-->
