@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.emveep.theentertainer.R;
 
+import cn.carbs.android.autozoominimageview.library.AutoZoomInImageView;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
@@ -46,12 +48,17 @@ public class FullscreenActivity extends AppCompatActivity{
             // Note that some of these constants are new as of API 16 (Jelly Bean)
             // and API 19 (KitKat). It is safe to use them, as they are inlined
             // at compile-time and do nothing on earlier devices.
-            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
+            mContentView.setSystemUiVisibility(
+                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+
+            /*mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);*/
         }
     };
     private View mControlsView;
@@ -128,6 +135,41 @@ public class FullscreenActivity extends AppCompatActivity{
         findViewById(R.id.register).setOnTouchListener(mDelayHideTouchListener);
         findViewById(R.id.already_have_account).setOnTouchListener(mDelayHideTouchListener);
         findViewById(R.id.take_a_tour).setOnTouchListener(mDelayHideTouchListener);
+
+        zoomEffect();
+    }
+
+    private void zoomEffect() {
+        final AutoZoomInImageView auto_zoomin_image_view =
+                (AutoZoomInImageView) findViewById(R.id.auto_zoomin_image_view);
+        auto_zoomin_image_view.post(new Runnable() {
+
+            @Override
+            public void run() {
+
+                auto_zoomin_image_view.init()
+                        .setScaleDelta(0.3f)//放大的系数是原来的（1 + 0.2）倍 Import dari CHina he he
+                        .setDurationMillis(10000)
+                        .setOnZoomListener(new AutoZoomInImageView.OnZoomListener() {
+                            @Override
+                            public void onStart(View view) {
+
+                            }
+
+                            @Override
+                            public void onUpdate(View view, float progress) {
+
+                            }
+
+                            @Override
+                            public void onEnd(View view) {
+
+                            }
+                        })
+                        .start(1000);
+            }
+        });
+
     }
 
     @Override
