@@ -85,13 +85,12 @@ public class FullscreenActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.register:
                 // TODO: create form
-                Intent intent2 = new Intent(FullscreenActivity.this, RegisterActivity.class);
-                startActivity(intent2);
+                RegisterActivity.start(this);
+
                 break;
             case R.id.take_a_tour:
                 // TODO: take a tour
-                Intent intent = new Intent(FullscreenActivity.this, HomeActivity.class);
-                startActivity(intent);
+                HomeActivity.start(this);
                 break;
             default:
                 break;

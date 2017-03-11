@@ -1,5 +1,7 @@
 package com.emveep.theentertainer.Activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,7 +15,6 @@ import com.emveep.theentertainer.Utility.HomeButton_effect;
 public class HomeActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -41,8 +42,10 @@ public class HomeActivity extends AppCompatActivity {
 
     };
 
-    private BottomNavigationView navigationView;
-
+    public static void start(Activity caller) {
+        Intent intent = new Intent(caller, HomeActivity.class);
+        caller.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -27,7 +27,4 @@
         android:icon="@drawable/ic_add_shopping_cart_black_24dp"
         android:title="" />
 
-
-
-
 </menu>
