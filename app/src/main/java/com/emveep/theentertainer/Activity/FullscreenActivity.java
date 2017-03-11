@@ -1,16 +1,26 @@
 package com.emveep.theentertainer.Activity;
 
-import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageSwitcher;
 import android.widget.Toast;
 
 import com.emveep.theentertainer.R;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+
 import cn.carbs.android.autozoominimageview.library.AutoZoomInImageView;
+
+import static com.emveep.theentertainer.R.anim.zoomin;
+import static com.emveep.theentertainer.R.anim.zoomout;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -19,6 +29,13 @@ import cn.carbs.android.autozoominimageview.library.AutoZoomInImageView;
 public class FullscreenActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "FullscreenActivity";
     private View mRegister, mTake_atour, mAlready_have_account;
+    private ImageSwitcher imageSwitcher;
+    private int [] imageList =
+            {R.drawable.image_building1,
+             R.drawable.image_sakura,
+             R.drawable.image_waterfall};
+
+    Animation zoomin, zoomout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +50,44 @@ public class FullscreenActivity extends AppCompatActivity implements View.OnClic
         mRegister = findViewById(R.id.register);
         mAlready_have_account = findViewById(R.id.already_have_account);
         mTake_atour = findViewById(R.id.take_a_tour);
+        imageSwitcher = (ImageSwitcher) findViewById(R.id.image_switcher);
+
+        zoomin = AnimationUtils.loadAnimation(this, R.anim.zoomin);
+        zoomout = AnimationUtils.loadAnimation(this, R.anim.zoomout);
+
+
+        imageSwitcher.postDelayed(new Runnable() {
+            int i = 0;
+            int max = imageList.length;
+            int min = 0;
+
+            public void run() {
+                i = i % 3;
+                Random random = new Random();
+                imageSwitcher.setBackgroundResource(imageList[i]);
+
+                if(i == random.nextInt(max - min + 1) + min){
+                    Log.d(TAG, "run: TRUE ----;");
+                 imageSwitcher.setAnimation(zoomin); imageSwitcher.startAnimation(zoomin);
+                }else {
+                    Log.d(TAG, "run: FALSE ----;");
+                    imageSwitcher.setAnimation(zoomout); imageSwitcher.startAnimation(zoomout);
+                }
+                imageSwitcher.postDelayed(this, 10000);
+                i++;
+            }
+        }, 1000);
 
         mRegister.setOnClickListener(this);
         mAlready_have_account.setOnClickListener(this);
         mTake_atour.setOnClickListener(this);
 
-        zoomEffect();
+//        zoomEffect();
     }
 
-    private void zoomEffect() {
+
+
+    /*private void zoomEffect() {
         final AutoZoomInImageView auto_zoomin_image_view =
                 (AutoZoomInImageView) findViewById(R.id.auto_zoomin_image_view);
         auto_zoomin_image_view.post(new Runnable() {
@@ -73,7 +119,7 @@ public class FullscreenActivity extends AppCompatActivity implements View.OnClic
             }
         });
 
-    }
+    }*/
 
     @Override
     public void onClick(View v) {
