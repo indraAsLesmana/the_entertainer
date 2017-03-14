@@ -255,6 +255,7 @@ public class FullscreenActivity extends AppCompatActivity implements View.OnClic
             case R.id.take_a_tour:
                 // TODO: take a tour
                 HomeActivity.start(this);
+                finish();
                 break;
             default:
                 break;
