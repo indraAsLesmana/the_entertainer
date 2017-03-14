@@ -42,4 +42,5 @@
     <string name="last_name">LAST NAME</string>
     <string name="country_of_residence">Country of residence</string>
     <string name="register_with_facebook">Register with facebook</string>
+    <string name="quick_search">Quick search by name or keyword</string>
 </resources>
