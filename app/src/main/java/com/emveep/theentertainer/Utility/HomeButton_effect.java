@@ -41,7 +41,7 @@ public class HomeButton_effect {
                 View iconView = menuView.getChildAt(i).findViewById(android.support.design.R.id.icon);
                 ViewGroup.LayoutParams layoutParams = iconView.getLayoutParams();
                 DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-                layoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, displayMetrics);
+                layoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 28, displayMetrics);
                 layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, displayMetrics);
                 iconView.setLayoutParams(layoutParams);
 

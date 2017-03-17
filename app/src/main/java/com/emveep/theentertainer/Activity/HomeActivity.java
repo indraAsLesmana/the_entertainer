@@ -111,8 +111,6 @@ public class HomeActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.home_pagger);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         HomeButton_effect.disableShiftMode(navigation, this);
-
-
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         setupViewPager(viewPager);
