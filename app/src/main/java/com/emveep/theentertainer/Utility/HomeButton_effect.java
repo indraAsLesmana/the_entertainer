@@ -42,7 +42,7 @@ public class HomeButton_effect {
                 ViewGroup.LayoutParams layoutParams = iconView.getLayoutParams();
                 DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
                 layoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 28, displayMetrics);
-                layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, displayMetrics);
+                layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 28, displayMetrics);
                 iconView.setLayoutParams(layoutParams);
 
                 //noinspection RestrictedApi

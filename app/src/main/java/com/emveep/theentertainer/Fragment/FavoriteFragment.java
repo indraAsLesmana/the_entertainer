@@ -13,7 +13,7 @@ import com.emveep.theentertainer.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FavoriteFragment extends Fragment {
+public class FavoriteFragment extends BaseFragment {
 
 
     public FavoriteFragment() {
@@ -28,4 +28,23 @@ public class FavoriteFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_favorite, container, false);
     }
 
+    @Override
+    public void updateUI() {
+
+    }
+
+    @Override
+    public String getPageTitle() {
+        return null;
+    }
+
+    @Override
+    public void setUICallbacks() {
+
+    }
+
+    @Override
+    public int getFragmentLayout() {
+        return 0;
+    }
 }
