@@ -37,8 +37,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
 
-
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
