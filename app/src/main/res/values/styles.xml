@@ -6,16 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="actionBarStyle">@style/removeShadow</item>
-        <item name="android:windowContentOverlay">@null</item> <!--remove shadow for android version lower than Lollipop-->
+        <item name="windowActionModeOverlay">true</item> <!-- make copy pasting pop up, inflate actionbar-->
         <item name="android:screenOrientation">portrait</item>
-    </style>
-
-    <!-- remove shadow below action bar for lollipop or newer-->
-    <style name="removeShadow" parent="style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <!-- <item name="android:elevation">0dp</item> -->
-        <!-- Support library compatibility -->
-        <item name="elevation">0dp</item>
     </style>
 
     <style name="FullscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
