@@ -1,6 +1,7 @@
 package com.emveep.theentertainer.Fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.emveep.theentertainer.Activity.HomeActivity;
 import com.emveep.theentertainer.R;
 
 
@@ -19,7 +21,8 @@ import com.emveep.theentertainer.R;
  */
 public class NotifFragment extends Fragment {
 
-    private Toolbar toolbar;
+    private ActionBar actionBar;
+    private Context mContext;
 
     public NotifFragment() {
         // Required empty public constructor
@@ -28,6 +31,25 @@ public class NotifFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (mContext instanceof HomeActivity){
+            actionBar = ((HomeActivity) mContext).getSupportActionBar();
+            if (actionBar != null){
+                actionBar.setDisplayShowTitleEnabled(true);
+                actionBar.setTitle(R.string.title_notifications);
+            }
+        }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        actionBar.setDisplayShowTitleEnabled(false);
     }
 
     @Override
@@ -35,12 +57,6 @@ public class NotifFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_notif, container, false);
-        toolbar = (Toolbar) rootView.findViewById(R.id.toolbar2);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        if (actionBar != null){
-            actionBar.setTitle(R.string.title_notifications);
-        }
 
         return rootView;
     }

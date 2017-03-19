@@ -1,25 +1,54 @@
 package com.emveep.theentertainer.Fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.emveep.theentertainer.Activity.HomeActivity;
 import com.emveep.theentertainer.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FavoriteFragment extends BaseFragment {
+public class FavoriteFragment extends Fragment {
 
+    private ActionBar actionBar;
+    private Context mContext;
 
     public FavoriteFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (mContext instanceof HomeActivity){
+            actionBar = ((HomeActivity) mContext).getSupportActionBar();
+            if (actionBar != null){
+                actionBar.setDisplayShowTitleEnabled(true);
+                actionBar.setTitle(R.string.title_favorite);
+            }
+        }
+
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,23 +57,4 @@ public class FavoriteFragment extends BaseFragment {
         return inflater.inflate(R.layout.fragment_favorite, container, false);
     }
 
-    @Override
-    public void updateUI() {
-
-    }
-
-    @Override
-    public String getPageTitle() {
-        return null;
-    }
-
-    @Override
-    public void setUICallbacks() {
-
-    }
-
-    @Override
-    public int getFragmentLayout() {
-        return 0;
-    }
 }

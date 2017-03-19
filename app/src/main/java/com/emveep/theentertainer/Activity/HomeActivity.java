@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -34,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private MaterialSearchBar searchBar;
     private Toolbar toolbar;
+    private static ActionBar actionBar;
+
 
     private ViewPager viewPager;
 
@@ -43,7 +46,6 @@ public class HomeActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    disableHomeTitle();
                     viewPager.setCurrentItem(HomePagerAdapter.HOME_FRAGMENT);
                     return true;
                 case R.id.navigation_notifications:
@@ -87,13 +89,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    private void disableHomeTitle(){
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null){
-            actionBar.setDisplayShowTitleEnabled(false);
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +96,8 @@ public class HomeActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        actionBar = getSupportActionBar();
 
         /**
          * search bar library
@@ -139,12 +136,17 @@ public class HomeActivity extends AppCompatActivity {
         shopFragment = new ShopFragment();
 
         adapter.addFragment(homeFragment); // fragment 0
-        adapter.addFragment(favoriteFragment); // fragment 1
-        adapter.addFragment(notifFragment); // fragment 2
+        adapter.addFragment(notifFragment); // fragment 1
+        adapter.addFragment(favoriteFragment); // fragment 2
         adapter.addFragment(profileFragment); // fragment 3
         adapter.addFragment(shopFragment); // fragment 4
 
         viewPager.setAdapter(adapter);
+    }
+
+    public static void setToolbarTitle(boolean showTitle, @Nullable String toolbarTiitle){
+        actionBar.setTitle(toolbarTiitle);
+        actionBar.setDisplayShowTitleEnabled(showTitle);
     }
 
 }
