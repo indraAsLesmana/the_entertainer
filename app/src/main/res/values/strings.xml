@@ -44,4 +44,8 @@
     <string name="register_with_facebook">Register with facebook</string>
     <string name="quick_search">Quick search by name or keyword</string>
     <string name="search">Search</string>
+    <string name="food_and_drink">Food &amp; drink</string>
+    <string name="beauty_and_fitness">Beauty &amp; fitness</string>
+    <string name="attraction_and_leisure"><![CDATA[Attraction & leisure]]></string>
+    <string name="retail_and_service"><![CDATA[Retail & service]]></string>
 </resources>
