@@ -28,12 +28,11 @@ import com.mancj.materialsearchbar.MaterialSearchBar;
 public class HomeActivity extends AppCompatActivity {
 
     private HomeFragment homeFragment;
-    private FavoriteFragment favoriteFragment;
     private NotifFragment notifFragment;
+    private FavoriteFragment favoriteFragment;
     private ProfileFragment profileFragment;
     private ShopFragment shopFragment;
 
-    private MaterialSearchBar searchBar;
     private Toolbar toolbar;
     private static ActionBar actionBar;
 
@@ -44,49 +43,44 @@ public class HomeActivity extends AppCompatActivity {
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
+            int id = item.getItemId();
+            switch (id) {
                 case R.id.navigation_home:
+                    setActionBarStyle(false, 0);
                     viewPager.setCurrentItem(HomePagerAdapter.HOME_FRAGMENT);
                     return true;
                 case R.id.navigation_notifications:
+                    setActionBarStyle(true, R.string.title_notifications);
                     viewPager.setCurrentItem(HomePagerAdapter.NOTIF_FRAGMENT);
                     return true;
                 case R.id.navigation_favorite:
+                    setActionBarStyle(true, R.string.title_favorite);
                     viewPager.setCurrentItem(HomePagerAdapter.FAVORITE_FRAGMENT);
                     return true;
                 case R.id.navigation_profile:
+                    setActionBarStyle(true, R.string.title_profile);
                     viewPager.setCurrentItem(HomePagerAdapter.PROFILE_FRAGMENT);
                     return true;
                 case R.id.navigation_shoping:
+                    setActionBarStyle(true, R.string.title_shop);
                     viewPager.setCurrentItem(HomePagerAdapter.SHOP_FRAGMENT);
                     return true;
-                default:
-                    viewPager.setCurrentItem(HomePagerAdapter.HOME_FRAGMENT);
             }
             return false;
         }
 
     };
 
+    private void setActionBarStyle(boolean titleEnable, int title){
+        actionBar.setDisplayShowTitleEnabled(titleEnable);
+        if (titleEnable){
+            actionBar.setTitle(title);
+        }
+    }
+
     public static void start(Activity caller) {
         Intent intent = new Intent(caller, HomeActivity.class);
         caller.startActivity(intent);
-    }
-
-    private void showSearchBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-            searchBar.setVisibility(View.VISIBLE);
-        }
-    }
-
-    private void disableSearchBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            searchBar.setVisibility(View.GONE);
-            actionBar.show();
-        }
     }
 
     @Override
@@ -98,6 +92,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(false);
 
         /**
          * search bar library
@@ -130,23 +125,18 @@ public class HomeActivity extends AppCompatActivity {
         HomePagerAdapter adapter = new HomePagerAdapter(getSupportFragmentManager());
 
         homeFragment = new HomeFragment();
-        favoriteFragment = new FavoriteFragment();
         notifFragment = new NotifFragment();
+        favoriteFragment = new FavoriteFragment();
         profileFragment = new ProfileFragment();
         shopFragment = new ShopFragment();
 
-        adapter.addFragment(homeFragment); // fragment 0
-        adapter.addFragment(notifFragment); // fragment 1
-        adapter.addFragment(favoriteFragment); // fragment 2
-        adapter.addFragment(profileFragment); // fragment 3
-        adapter.addFragment(shopFragment); // fragment 4
+        adapter.addFragment(homeFragment);
+        adapter.addFragment(notifFragment);
+        adapter.addFragment(favoriteFragment);
+        adapter.addFragment(profileFragment);
+        adapter.addFragment(shopFragment);
 
         viewPager.setAdapter(adapter);
-    }
-
-    public static void setToolbarTitle(boolean showTitle, @Nullable String toolbarTiitle){
-        actionBar.setTitle(toolbarTiitle);
-        actionBar.setDisplayShowTitleEnabled(showTitle);
     }
 
 }

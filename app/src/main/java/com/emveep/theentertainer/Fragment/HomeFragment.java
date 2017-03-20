@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class HomeFragment extends Fragment {
 
     private ActionBar actionBar;
     private Context mContext;
+    private static final String TAG = "HomeFragment";
 
     public HomeFragment() {
         // Required empty public constructor
@@ -34,9 +36,6 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (mContext instanceof HomeActivity){
             actionBar = ((HomeActivity) mContext).getSupportActionBar();
-            if (actionBar != null){
-                actionBar.setDisplayShowTitleEnabled(false);
-            }
         }
     }
 
@@ -44,12 +43,6 @@ public class HomeFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = context;
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        actionBar.setDisplayShowTitleEnabled(false);
     }
 
     @Override

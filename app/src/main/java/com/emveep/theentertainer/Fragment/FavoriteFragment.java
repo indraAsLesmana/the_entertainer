@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ public class FavoriteFragment extends Fragment {
     private ActionBar actionBar;
     private Context mContext;
 
+    private static final String TAG = "FavoriteFragment";
+
     public FavoriteFragment() {
         // Required empty public constructor
     }
@@ -31,10 +34,6 @@ public class FavoriteFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (mContext instanceof HomeActivity){
             actionBar = ((HomeActivity) mContext).getSupportActionBar();
-            if (actionBar != null){
-                actionBar.setDisplayShowTitleEnabled(true);
-                actionBar.setTitle(R.string.title_favorite);
-            }
         }
 
     }
@@ -43,11 +42,6 @@ public class FavoriteFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = context;
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
     @Override
